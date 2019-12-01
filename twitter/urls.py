@@ -16,7 +16,14 @@ Including another URLconf
 
 from django.urls import path
 from .views import SignUpView
+from .views import SignInView
+from .views import IndexView
+from .views import LogoutView
+
 
 urlpatterns = [
-    path("signup/", SignUpView.as_view()),
+    path("signup/", SignUpView.as_view(), name="signup"),
+    path("", IndexView.as_view(), name="index"),
+    path("signin/", SignInView.as_view(), name="signin"),
+    path("logout/", LogoutView.as_view(), name="logout")
 ]

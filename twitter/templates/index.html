@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}
+{{ user.username }}
+{% endblock %}
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <textarea name="text"></textarea><br>
+        <input type="submit" value="Send"/>
+    </form>
+    {% for message in messages %}
+        <div>
+            <pre>{{message.text}}</pre>
+            {{message.author.username}}
+        </div>
+    {% endfor %}
+{% endblock %}

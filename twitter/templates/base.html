@@ -5,6 +5,15 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
+    <div style="display:inline-block">
+        {% if user.is_authenticated %}
+            {{user.username}}
+            <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+            <a href="{% url 'signin' %}">Sign in</a>
+            <a href="{% url 'signup' %}">Sign up</a>
+        {% endif %}
+    </div>
         {% block content %}{% endblock %}
 </body>
 </html>
